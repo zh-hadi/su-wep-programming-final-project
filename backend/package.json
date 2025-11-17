@@ -1,0 +1,15 @@
+{
+  "name": "su-web-programing-final-project",
+  "version": "1.0.0",
+  "description": "lab-final project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hadiuzzaman",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mysql": "^2.18.1"
+  }
+}
