@@ -4,9 +4,13 @@ const path = require('path')
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
-    res.send('Hello world')
-})
+const pagesRouters = require('./routes/pages.routes')
+const authRoutes = require('./routes/auth.routes')
+
+app.use(express.json())
+app.use("/", pagesRouters)
+app.use("/auth/", authRoutes)
+
 
 var db = mysql.createConnection({
     host     : 'localhost',
@@ -38,10 +42,7 @@ app.get("/users", (req, res)=> {
     // });
 });
 
-app.get("/login", (req, res) => {
-    let filepath = path.join(__dirname + "/../frontend/login.html")
-    res.sendFile(filepath)
-})
+
 
 app.listen(port, () => {
     console.log(`Project app port: ${port}`)
