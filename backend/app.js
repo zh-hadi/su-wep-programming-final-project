@@ -8,6 +8,7 @@ const pagesRouters = require('./routes/pages.routes')
 const authRoutes = require('./routes/auth.routes')
 
 app.use(express.json())
+app.use(express.static(path.join(__dirname, "../frontend")));
 app.use("/", pagesRouters)
 app.use("/auth/", authRoutes)
 
