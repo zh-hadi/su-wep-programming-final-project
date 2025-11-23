@@ -15,5 +15,11 @@ router.get("/register", (req, res) => {
 })
 
 
+router.get("/dashboard", (req, res) => {
+    let filepath = path.join(__dirname + "/../../frontend/dashboard.html")
+    res.sendFile(filepath)
+})
+
+
 
 module.exports = router

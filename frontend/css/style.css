@@ -1,3 +1,17 @@
+/* menu */
+
+/* 
+1. login & registation form 
+2. dashboard side bar
+3. dashboard top bar
+4. main-container 
+
+
+
+
+*/
+
+
 * {
     font-family: "Roboto", sans-serif;
     box-sizing: border-box;
@@ -141,3 +155,96 @@ html {
     gap: 20px;
 }
 
+/* 2. dashboard side bar */
+
+.sidebar {
+    width: 280px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #4e3939;
+    color: white;
+    /* left: -280px; */
+}
+
+.sidebar .sidebar-logo{
+    font-weight: bold;
+    font-size: 25px;
+    letter-spacing: 3px;
+    text-align: center;
+    padding: 20px 10px;
+}
+.sidebar .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    /* gap: 20px; */
+    /* background-color: red; */
+    /* padding: 20px; */
+}
+.sidebar .sidebar-nav .sidebar-nav-item {
+    /* background-color: rgb(118, 71, 71); */
+    padding: 15px 20px;
+    font-size: 14px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+}
+.sidebar .sidebar-nav .sidebar-nav-item:hover {
+    background-color: rgb(118, 71, 71);
+    color: wheat;
+}
+.sidebar .sidebar-nav .sidebar-nav-item span {
+    text-align: center;
+}
+
+/*================== 3. dashboard top bar start ================= */
+.top-bar {
+    background-color: #fff;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+}
+.top-bar .top-bar-btn {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 0 20px;
+}
+.top-bar .top-bar-btn .user-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+}
+.top-bar .top-bar-btn .user-btn img {
+    width: 100%;
+    height: 100%;
+}
+
+.top-bar .top-bar-btn div {
+    color: grey;
+    font-size: 13px;
+    /* font-weight: bold; */
+}
+/*================== 3. dashboard top bar end   ================= */
+
+
+/* 4. main-container  */
+.main-container {
+    width: 100% -280px;
+    /* background-color: red; */
+    margin-left: 280px;
+    /* padding: 10px; */
+}
+
+.main-content {
+    margin: 20px;
+}
