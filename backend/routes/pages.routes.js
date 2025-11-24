@@ -20,6 +20,10 @@ router.get("/dashboard", (req, res) => {
     res.sendFile(filepath)
 })
 
+router.get("/add-bazar", (req, res) => {
+    let filepath = path.join(__dirname + "/../../frontend/add-bazar.html")
+    res.sendFile(filepath)
+})
 
 
 module.exports = router

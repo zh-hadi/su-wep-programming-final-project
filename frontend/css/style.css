@@ -1,15 +1,23 @@
 /* menu */
 
 /* 
+00 second project code  common code
 1. login & registation form 
 2. dashboard side bar
 3. dashboard top bar
 4. main-container 
+5. add bazar page  
 
 
 
 
 */
+:root {
+    --blue: #007bff;
+    --primay: #ffc8b384;
+    --black-light: #1d171700;
+    --white: #ffffff;
+}
 
 
 * {
@@ -25,6 +33,47 @@ html {
 .black-60 {
     color: rgba(0, 0, 0, .6);
 }
+
+.btn-save {
+    background-color: #4e3939;
+    text-align: center;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    transition: all 0.3s ease;
+}
+.btn-save:hover {
+    background-color: #675555;
+}
+
+.d-flex {
+    display: flex;
+}
+.flex-1 {
+    flex-grow: 1;
+}
+
+.d-flex-column {
+    flex-direction: column;
+}
+
+.justifiy-between {
+    justify-content: space-between;
+}
+
+.aligin-items {
+    align-items: center;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.p-10 {
+    padding: 10px;
+}
+
+
 
 .form-container {
     max-width: 450px;
@@ -155,6 +204,7 @@ html {
     gap: 20px;
 }
 
+
 /* 2. dashboard side bar */
 
 .sidebar {
@@ -248,3 +298,67 @@ html {
 .main-content {
     margin: 20px;
 }
+
+
+
+/* 5. add bazar page  start */
+.bazar-add {
+    max-width: 550px;
+    padding: 20px;
+    margin: 0 auto;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    background-color: white;
+}
+.bazar-add .bazar-add-header{
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+.bazar-add .bazar-add-body{}
+.bazar-add .bazar-add-body .bazar-add-form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.bazar-add .bazar-add-body .bazar-add-form .form-item{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.bazar-add .bazar-add-body .bazar-add-form .form-item label{
+    font-size: 14px;
+}
+.bazar-add .bazar-add-body .bazar-add-form .form-item input{
+    padding: 10px 15px;
+}
+.bazar-add .bazar-add-body .bazar-add-form .form-item .form-item-all{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 10px;
+    /* border: 1px solid blue; */
+}
+.bazar-add .bazar-add-body .bazar-add-form .form-item  .item-add-btn{
+    padding: 8px 20px;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+.bazar-add .bazar-add-body .bazar-add-form .form-item .form-item-all .form-item-single{
+    display: flex;
+    flex-direction: column;
+}
+
+.bazar-add .bazar-add-body .bazar-add-form .form-item .form-item-all .form-item-single input{
+    width: 100px;
+    padding: 5px;
+}
+
+.item-serial {
+    width: 20px !important;
+    border: none;
+    background-color: gray;
+    color: white;
+}
+
+/* 5. add bazar page  end */
