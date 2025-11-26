@@ -45,13 +45,17 @@ if(bazarAddForm){
             items.push({
                 name: names[i],
                 price: Number(prices[i]),
-                qty: Number(qtys[i])
+                qty: qtys[i]
             });
         }
+
+        const total = document.getElementById('total-pirce-show').innerText;
     
         const payload = {
+            userID: getUser().id,
             date: date,
-            items
+            items,
+            total: total
         };
 
         try {

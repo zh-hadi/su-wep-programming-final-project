@@ -12,7 +12,7 @@ const addItems = (e, btn) => {
                 <input type="text" name="name[]">
             </div>
             <div class="form-item-single">
-                <input type="text" name="price[]">
+                <input class="total_price_cal" onchange="calculateTotalPrice()" type="text"  name="price[]">
             </div>
             <div class="form-item-single">
                 <input type="text" name="qty[]">
@@ -20,9 +20,26 @@ const addItems = (e, btn) => {
         </div>
     `;
 
-    
+   
 
     btn.parentElement.insertAdjacentHTML("beforebegin", html);
     // alert(itemCount);
 
+}
+
+// 
+const calculateTotalPrice = () => {
+    let total = 0;
+    document.querySelectorAll('.total_price_cal').forEach((input)=> {
+        total += parseFloat(input.value) || 0;
+    });
+    document.getElementById('total-pirce-show').innerText = total;
+}
+
+
+
+
+const getUser = () => {
+    let user = JSON.parse(localStorage.getItem('authuser'));
+    return user;
 }
