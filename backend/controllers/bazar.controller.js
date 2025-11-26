@@ -97,7 +97,36 @@ exports.update = (req, res) => {
         });
         
     })
-
-
     
+}
+
+exports.destroy = (req, res) => {
+    const bazarId = req.params.id;
+
+    // frist check bazar exit or not 
+    Bazar.getBazarById(bazarId, (err, result)=> {
+        if(err){
+            console.log(err)
+            return res.status(500).json({error: err})
+        }
+        if(result.length == 0){
+            return res.status(404).json({
+                status: false,
+                message: "Bazar not found"
+            });
+        }
+
+        Bazar.destroy(bazarId,  (err2, result) => {
+            if(err2){
+                console.log(err)
+                return res.status(500).json({error: err2})
+            }else {
+                return res.json({
+                    status: true,
+                    message: "Bazar Delete successfully!"
+                });
+            }
+        });
+        
+    })
 }

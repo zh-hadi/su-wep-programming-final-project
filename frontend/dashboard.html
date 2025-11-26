@@ -27,7 +27,7 @@
         <div class="sidebar">
             <div class="sidebar-logo">Meal Management</div>
             <div class="sidebar-nav">
-                <a class="sidebar-nav-item" href="">
+                <a class="sidebar-nav-item" href="/dashboard">
                     <span class="material-symbols-outlined">
                         home
                     </span>
@@ -35,7 +35,7 @@
                         Dashboard
                     </span>
                 </a>
-                <a class="sidebar-nav-item" href="">
+                <a class="sidebar-nav-item" href="/add-bazar">
                     <span class="material-symbols-outlined">
                         add_ad
                     </span>
@@ -43,7 +43,7 @@
                         Add Bazar
                     </span>
                 </a>
-                <a class="sidebar-nav-item" href="">
+                <a class="sidebar-nav-item" href="/bazars">
                     <span class="material-symbols-outlined">
                         store
                     </span>
@@ -86,14 +86,17 @@
             <div class="top-bar">
                 <div>
                 </div>
-                <div>
-                   <div class="top-bar-btn">
-                       <div>Hadiuzzaman</div>
-                       <button class="user-btn">
-                           <img src="https://placehold.co/400" alt="">
-                       </button>
-                   </div>
-                </div>
+                <div class="user-info">
+                    <div class="top-bar-btn">
+                        <div id="auth-user-name">Hadiuzzaman</div>
+                        <button class="user-btn" >
+                            <img src="https://placehold.co/400" alt="">
+                         </button>
+                         <div class="logout-ul">
+                             <button id="logout-btn">Logout</button>
+                         </div>
+                    </div>
+                 </div>
             </div>
             <!-- top bar section end  -->
 
@@ -107,7 +110,7 @@
         <!-- main section end  -->
     </div>
 
-
+    <script src="./js/main.js"></script>
    <script src="./js/script.js"></script>
 </body>
 </html>

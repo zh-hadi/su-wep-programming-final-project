@@ -27,7 +27,7 @@
         <div class="sidebar">
             <div class="sidebar-logo">Meal Management</div>
             <div class="sidebar-nav">
-                <a class="sidebar-nav-item" href="">
+                <a class="sidebar-nav-item" href="/dashboard">
                     <span class="material-symbols-outlined">
                         home
                     </span>
@@ -35,15 +35,15 @@
                         Dashboard
                     </span>
                 </a>
-                <a class="sidebar-nav-item" href="">
+                <a class="sidebar-nav-item" href="/add-bazar">
                     <span class="material-symbols-outlined">
                         add_ad
                     </span>
                     <span>
-                        Edit Bazar
+                        Add Bazar
                     </span>
                 </a>
-                <a class="sidebar-nav-item" href="">
+                <a class="sidebar-nav-item" href="/bazars">
                     <span class="material-symbols-outlined">
                         store
                     </span>
@@ -86,14 +86,17 @@
             <div class="top-bar">
                 <div>
                 </div>
-                <div>
-                   <div class="top-bar-btn">
-                       <div>Hadiuzzaman</div>
-                       <button class="user-btn">
-                           <img src="https://placehold.co/400" alt="">
-                       </button>
-                   </div>
-                </div>
+                <div class="user-info">
+                    <div class="top-bar-btn">
+                        <div id="auth-user-name">Hadiuzzaman</div>
+                        <button class="user-btn" >
+                            <img src="https://placehold.co/400" alt="">
+                         </button>
+                         <div class="logout-ul">
+                             <button id="logout-btn">Logout</button>
+                         </div>
+                    </div>
+                 </div>
             </div>
             <!-- top bar section end  -->
 
@@ -151,7 +154,7 @@
                             <div>Total: <span id="total-pirce-show">00</span></div>
                         </div>
                         <div class="d-flex gap-20">
-                            <a class="flex-1 btn-back" href="">Back</a>
+                            <a class="flex-1 btn-back" href="/bazars">Back</a>
                             <button class="flex-1 btn-save" type="submit">Update</button>
                         </div>
                     </form>

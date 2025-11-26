@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const path = require('path')
+const auth = require('../middleware/auth.middleware');
 
 
 router.get("/login", (req, res)=> {
@@ -25,7 +26,7 @@ router.get("/add-bazar", (req, res) => {
     res.sendFile(filepath)
 })
 
-router.get("/bazars", (req, res) => {
+router.get("/bazars", auth, (req, res) => {
     let filepath = path.join(__dirname + "/../../frontend/bazars.html")
     res.sendFile(filepath)
 })

@@ -57,3 +57,6 @@ const getUser = () => {
     let user = JSON.parse(localStorage.getItem('authuser'));
     return user;
 }
+
+let user = JSON.parse(localStorage.getItem('authuser'));
+document.getElementById('auth-user-name').innerText = user.firstname+ " " + user.lastname;

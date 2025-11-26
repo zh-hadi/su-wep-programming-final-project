@@ -282,6 +282,8 @@ html {
     gap: 10px;
     align-items: center;
     padding: 0 20px;
+    /* background-color: blue; */
+    /* position: relative; */
 }
 .top-bar .top-bar-btn .user-btn {
     width: 40px;
@@ -300,6 +302,32 @@ html {
     color: grey;
     font-size: 13px;
     /* font-weight: bold; */
+}
+
+.user-info {
+    position: relative;
+}
+
+.logout-ul {    
+    background-color: white;
+    padding: 10px;
+    /* border: 1px solid gray; */
+    border-radius: 4px;
+    display: flex;
+    justify-content: end;
+}
+.logout-ul button {
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.logout-ul button:hover {
+    background-color: red;
+    color: white;
 }
 /*================== 3. dashboard top bar end   ================= */
 

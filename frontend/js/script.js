@@ -17,8 +17,11 @@ if(loginForm){
             const data = await res.json();
     
             localStorage.setItem('authuser', JSON.stringify(data.user));
-    
-            console.log(data)
+
+            // console.log(data)
+            if (data.status === true) {
+                window.location.href = data.url;
+            }
     
         } catch (error) {
             console.log("error happend here: "+ error);
@@ -120,11 +123,61 @@ if(bazarEditForm){
     
             const data = await res.json();
     
-    
             console.log(data)
+    
+           
     
         } catch (error) {
             console.log("error happend here: "+ error);
         }
     })
+}
+
+// logout method
+const logoutBtn = document.getElementById("logout-btn");
+if(logoutBtn){
+    logoutBtn.addEventListener('click', async ()=> {
+        try {
+            const res =await fetch('http://localhost:3000/api/auth/logout',{
+                method: "POST",
+                headers: { "Content-Type": "application/json"},
+            });
+
+            const data = await res.json();
+
+            console.log(data);
+
+            if (data.status === true) {
+                localStorage.removeItem('authuser');
+                window.location.href = data.url;
+            }
+        }catch(err){
+            console.log("error happend: "+ err)
+        }
+    })
+}
+
+// delete bazar
+const deleteBazar= async (btn, id) => {
+    const tr = btn.closest("tr");
+
+
+    try{
+        const res =await fetch('http://localhost:3000/api/bazars/'+id,{
+            method: "DELETE",
+            headers: { "Content-Type": "application/json"},
+        });
+
+        const data = await res.json();
+
+        console.log(data);
+
+        if (data.status === true) {
+           if(tr){
+            tr.remove();
+           }
+        }
+    }catch(err) {
+        console.log("delete item error happend: "+ err)
+    }
 }

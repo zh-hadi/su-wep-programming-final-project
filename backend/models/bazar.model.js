@@ -10,7 +10,7 @@ class Bazar {
 
     // get all bazar
     static getAllBazar(callback){
-        let query = `SELECT b.id, u.firstname, u.lastname, b.date, b.total_amount FROM bazars b JOIN users u ON b.user_id = u.id ORDER BY b.date`;
+        let query = `SELECT b.id, b.user_id, u.firstname, u.lastname, b.date, b.total_amount FROM bazars b JOIN users u ON b.user_id = u.id ORDER BY b.date`;
         db.query(query, callback);
     }
 
@@ -29,6 +29,12 @@ class Bazar {
             WHERE id = ?
         `;
         db.query(query, [date, foodList, totalAmount, id], callback)
+    }
+
+    //destroy
+    static destroy(id, callback){
+        const query = `DELETE FROM bazars WHERE bazars.id = ?`;
+        db.query(query, [id], callback)
     }
 
 } 

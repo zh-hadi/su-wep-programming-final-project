@@ -26,7 +26,7 @@
         <div class="sidebar">
             <div class="sidebar-logo">Meal Management</div>
             <div class="sidebar-nav">
-                <a class="sidebar-nav-item" href="">
+                <a class="sidebar-nav-item" href="/dashboard">
                     <span class="material-symbols-outlined">
                         home
                     </span>
@@ -34,7 +34,7 @@
                         Dashboard
                     </span>
                 </a>
-                <a class="sidebar-nav-item" href="">
+                <a class="sidebar-nav-item" href="/add-bazar">
                     <span class="material-symbols-outlined">
                         add_ad
                     </span>
@@ -42,7 +42,7 @@
                         Add Bazar
                     </span>
                 </a>
-                <a class="sidebar-nav-item" href="">
+                <a class="sidebar-nav-item" href="/bazars">
                     <span class="material-symbols-outlined">
                         store
                     </span>
@@ -85,12 +85,15 @@
             <div class="top-bar">
                 <div>
                 </div>
-                <div>
+                <div class="user-info">
                    <div class="top-bar-btn">
-                       <div>Hadiuzzaman</div>
-                       <button class="user-btn">
+                       <div id="auth-user-name">Hadiuzzaman</div>
+                       <button class="user-btn" >
                            <img src="https://placehold.co/400" alt="">
-                       </button>
+                        </button>
+                        <div class="logout-ul">
+                            <button id="logout-btn">Logout</button>
+                        </div>
                    </div>
                 </div>
             </div>
@@ -195,6 +198,7 @@
         fetchBazarData();
 
         const addBazarList = (data) => {
+            let user = JSON.parse(localStorage.getItem('authuser'));
             let html = ``;
             data.forEach((bazar, index) => {
                 console.log(bazar)
@@ -206,17 +210,20 @@
                         <td>${bazar.total_amount}</td>
                         <td>${formatDate(bazar.date)}</td>
                         <td>
-                            <a href="http://localhost:3000/edit-bazar/${bazar.id}">
+                           ${
+                            user.id === bazar.user_id ?
+                            `<a href="http://localhost:3000/edit-bazar/${bazar.id}">
+                                    <span class="material-symbols-outlined">
+                                    edit_square
+                                    </span>
+                            </a>
+                            <button class="pointer" onclick="deleteBazar(this, ${bazar.id})">
                                 <span class="material-symbols-outlined">
-                                edit_square
+                                    delete
                                 </span>
-                        </a>
-                        <button>
-                            <span class="material-symbols-outlined">
-                                delete
-                            </span>
-                        </button>
-                        </td>
+                            </button>
+                            </td>` : `--`
+                            } 
                     </tr>
                 `;
             });
