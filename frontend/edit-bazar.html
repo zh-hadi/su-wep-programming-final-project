@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registation Form</title>
+
+    <!-- icon  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=badge,person,mail" />
+
+    <!-- style sheet -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+</head>
+<body>
+    
+    
+
+    <div>
+        <!-- sidebar section start  -->
+        <div class="sidebar">
+            <div class="sidebar-logo">Meal Management</div>
+            <div class="sidebar-nav">
+                <a class="sidebar-nav-item" href="">
+                    <span class="material-symbols-outlined">
+                        home
+                    </span>
+                    <span>
+                        Dashboard
+                    </span>
+                </a>
+                <a class="sidebar-nav-item" href="">
+                    <span class="material-symbols-outlined">
+                        add_ad
+                    </span>
+                    <span>
+                        Edit Bazar
+                    </span>
+                </a>
+                <a class="sidebar-nav-item" href="">
+                    <span class="material-symbols-outlined">
+                        store
+                    </span>
+                    <span>
+                        All Bazar
+                    </span>
+                </a>
+                <a class="sidebar-nav-item" href="">
+                    <span class="material-symbols-outlined">
+                        fork_spoon
+                    </span>
+                    <span>
+                        Meal List
+                    </span>
+                </a>
+                <a class="sidebar-nav-item" href="">
+                    <span class="material-symbols-outlined">
+                        dine_in
+                    </span>
+                    <span>
+                        Add Meal
+                    </span>
+                </a>
+                <a class="sidebar-nav-item" href="">
+                    <span class="material-symbols-outlined">
+                        diversity_3
+                    </span>
+                    <span>
+                        Member
+                    </span>
+                </a>
+
+            </div>
+        </div>
+        <!-- sidebar section end  -->
+
+        <!-- main section start  -->
+        <div class="main-container">
+            <!-- top bar section start  -->
+            <div class="top-bar">
+                <div>
+                </div>
+                <div>
+                   <div class="top-bar-btn">
+                       <div>Hadiuzzaman</div>
+                       <button class="user-btn">
+                           <img src="https://placehold.co/400" alt="">
+                       </button>
+                   </div>
+                </div>
+            </div>
+            <!-- top bar section end  -->
+
+
+            <!-- main content start  -->
+            <main class="main-content">
+               <div class="bazar-add">
+                <h2 class="bazar-add-header">Edit Bazar</h2>
+                <div class="bazar-add-body">
+                    <form id="bazar-edit-form" class="bazar-add-form">
+                        <div class="form-item">
+                            <label for="">Today Date</label>
+                            <input type="date" name="date" value="" id="edit-form-bazar-date">
+                            <input type="hidden" name="bazar_id"  value="" class="d-none" id="edit-form-bazar-id">
+                        </div>
+                        <div class="form-item">
+                            <label for="" id="list-label">Items</label>
+                            <!-- <div class="form-item-all">
+                                <div class="form-item-single ">
+                                    <label for="">#</label>
+                                    <input class="item-serial" type="text" value="1">
+                                </div>
+                                <div class="form-item-single">
+                                    <label for="">Name</label>
+                                    <input type="text" name="name[]">
+                                </div>
+                                <div class="form-item-single">
+                                    <label for="">Price</label>
+                                    <input type="text" class="total_price_cal" onchange="calculateTotalPrice()" name="price[]">
+                                </div>
+                                <div class="form-item-single">
+                                    <label for="">Qty</label>
+                                    <input type="text" name="qty[]">
+                                </div>
+                            </div> -->
+                            <!-- <div class="form-item-all">
+                                <div class="form-item-single">
+                                    <input type="text" value="1">
+                                </div>
+                                <div class="form-item-single">
+                                    <input type="text">
+                                </div>
+                                <div class="form-item-single">
+                                    <input type="text">
+                                </div>
+                                <div class="form-item-single">
+                                    <input type="text">
+                                </div>
+                            </div> -->
+                            <div>
+                                <button class="item-add-btn" data-item-count="1" onclick="addItems(event, this)">Add +</button>
+                            </div>
+                        </div>
+                        <div>
+                            <div>Total: <span id="total-pirce-show">00</span></div>
+                        </div>
+                        <div class="d-flex gap-20">
+                            <a class="flex-1 btn-back" href="">Back</a>
+                            <button class="flex-1 btn-save" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+               </div>
+            </main>
+            <!-- main content end  -->
+        </div>
+        <!-- main section end  -->
+    </div>
+
+
+    <script src="/js/main.js"></script>
+   <script src="/js/script.js"></script>
+
+   <script>
+        const getBazarData =async () => {
+            const path = window.location.pathname; 
+            const segments = path.split('/');      
+            const bazarId = segments[2];    
+            
+            // alert(bazarId);
+            try{
+                const res = await fetch("http://localhost:3000/api/bazars/"+bazarId);
+                const data = await res.json();
+
+                let bazar = data.data[0];
+
+                console.log(bazar)
+
+                document.getElementById('edit-form-bazar-date').value = formatDateForBazar(bazar.date);
+                document.getElementById('edit-form-bazar-id').value = bazar.id
+                document.getElementById('total-pirce-show').innerText = bazar.total_amount;
+                console.log(bazar);
+                itemListAdd(JSON.parse(bazar.food_list));
+            }catch(err){
+                console.log("error happend: "+ err);
+            }
+        }
+
+        getBazarData();
+
+        const itemListAdd = (data) => {
+            console.log(data)
+            let html = ``;
+            data.forEach((foodItem, index) => {
+                 html += `
+                    <div class="form-item-all">
+                        <div class="form-item-single">
+                            <input class="item-serial" type="text" value="${++index}">
+                        </div>
+                        <div class="form-item-single">
+                            <input type="text" name="name[]" value="${foodItem.name}">
+                        </div>
+                        <div class="form-item-single">
+                            <input class="total_price_cal" onchange="calculateTotalPrice()" type="text"  name="price[]" value="${foodItem.price}">
+                        </div>
+                        <div class="form-item-single">
+                            <input type="text" name="qty[]" value="${foodItem.qty}">
+                        </div>
+                    </div>
+                `;
+
+            });
+
+            document.querySelector('.item-add-btn').dataset.itemCount = data.length;
+
+            document.getElementById('list-label').insertAdjacentHTML('afterend', html);
+        }
+   </script>
+
+</body>
+</html>

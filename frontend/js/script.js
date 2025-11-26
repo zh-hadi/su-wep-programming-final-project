@@ -59,8 +59,61 @@ if(bazarAddForm){
         };
 
         try {
-            const res = await fetch('http://localhost:3000/api/bazar', {
+            const res = await fetch('http://localhost:3000/api/bazars', {
                 method: "POST",
+                headers: { "Content-Type": "application/json"},
+                body: JSON.stringify(payload)
+            });
+    
+            const data = await res.json();
+    
+    
+            console.log(data)
+    
+        } catch (error) {
+            console.log("error happend here: "+ error);
+        }
+    })
+}
+
+
+// bazar edit form 
+const bazarEditForm = document.getElementById('bazar-edit-form');
+if(bazarEditForm){
+    bazarEditForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+    
+        const form = e.target;
+        const formData = new FormData(form);
+    
+        const items = [];
+        const date = formData.get('date');
+        const bazarId = formData.get('bazar_id');
+        const names = formData.getAll('name[]');
+        const prices = formData.getAll('price[]');
+        const qtys = formData.getAll('qty[]');
+
+        for (let i = 0; i < names.length; i++) {
+            items.push({
+                name: names[i],
+                price: Number(prices[i]),
+                qty: qtys[i]
+            });
+        }
+
+        const total = document.getElementById('total-pirce-show').innerText;
+    
+        const payload = {
+            date: date,
+            items,
+            total: total
+        };
+
+        // console.log(payload);
+
+        try {
+            const res = await fetch('http://localhost:3000/api/bazars/update/'+bazarId, {
+                method: "PUT",
                 headers: { "Content-Type": "application/json"},
                 body: JSON.stringify(payload)
             });

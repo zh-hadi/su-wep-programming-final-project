@@ -36,7 +36,21 @@ const calculateTotalPrice = () => {
     document.getElementById('total-pirce-show').innerText = total;
 }
 
+function formatDate(isoDate) {
+    const date = new Date(isoDate);
 
+    const day = date.getDate(); 
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const month = monthNames[date.getMonth()];
+    const year = date.getFullYear();
+
+    return `${day} ${month} ${year}`;
+}
+
+function formatDateForBazar(dateString) {
+    return dateString.split("T")[0];
+}
 
 
 const getUser = () => {
