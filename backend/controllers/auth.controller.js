@@ -24,7 +24,48 @@ exports.login = (req, res) => {
 }
 
 exports.register = (req, res) => {
-    res.send("register done");
+    const {firstname, lastname, email, password} = req.body;
+
+    // console.log(firstname)
+    // console.log(lastname)
+    // console.log(email)
+    // console.log(password)
+
+    user.findUserByEmail(email, (err, result)=> {
+        if(err){
+            console.log(err)
+            return res.status(500).json({
+                status: false,
+                message: err
+            })
+        }
+        if(result.length > 0){
+            return res.json({
+                status: false,
+                message: "This email is already registered."
+            });
+        }else {
+            user.createUser(firstname, lastname, email, password, (err2, result2)=> {
+                if(err2){
+                    console.log(err2)
+                    return res.status(500).json({
+                        status: false,
+                        message: err2
+                    })
+                }
+                if(result2.affectedRows  > 0){
+                    return res.json({
+                        status: true,
+                        message: "Registation successfully!",
+                        url: "/login"
+                    });
+                }
+            })
+        }
+
+
+
+    })
 }
 
 

@@ -29,6 +29,67 @@ if(loginForm){
     });
 }
 
+// register handler 
+const registerFrom = document.getElementById('register-from');
+if(registerFrom){
+    registerFrom.addEventListener('submit',async (e)=> {
+        e.preventDefault();
+
+        const form = e.target;
+        const formData = new FormData(form);
+    
+        const items = [];
+        const email = formData.get('email');
+        const password = formData.get('password');
+        const cPassword = formData.get('c-password');
+        const firstname = formData.get('firstname');
+        const lastname = formData.get('lastname');
+       
+        const errorMessage = document.getElementById('error-message');
+        if (password !== cPassword) {
+            errorMessage.style.display = "block";      
+            errorMessage.innerText = "Password not match!"; 
+            return;
+        } else {
+            errorMessage.style.display = "none";
+            errorMessage.innerText = "";
+        }
+
+        // const total = document.getElementById('total-pirce-show').innerText;
+    
+        const payload = {
+            firstname,
+            lastname,
+            email,
+            password,
+        };
+
+        // console.log(payload)
+
+        try {
+            const res = await fetch('http://localhost:3000/api/auth/register', {
+                method: "POST",
+                headers: { "Content-Type": "application/json"},
+                body: JSON.stringify(payload)
+            });
+    
+            const data = await res.json();
+
+            console.log(data)
+            if (data.status === true) {
+                window.location.href = data.url;
+            }else{
+                errorMessage.style.display = "block";      
+                errorMessage.innerText = data.message; 
+            }
+    
+        } catch (error) {
+            console.log("error happend here: "+ error);
+        }
+
+    })
+}
+
 // add bazar 
 const bazarAddForm = document.getElementById('bazar-add-form');
 if(bazarAddForm){

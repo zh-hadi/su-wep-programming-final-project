@@ -6,6 +6,16 @@ class User {
         const query = "SELECT * FROM users WHERE email = ? AND password = ?";
         db.query(query, [email, password], callback);
     }
+
+    static findUserByEmail(email, callback) {
+        const query = "SELECT * FROM users WHERE email = ?";
+        db.query(query, [email], callback)
+    }
+
+    static createUser(firstname, lastname, email, password, callback){
+        const query = `INSERT INTO users (firstname, lastname, email, password) VALUES (?, ?, ?, ?)`;
+        db.query(query, [firstname, lastname, email, password], callback);
+    }
 }
 
 
