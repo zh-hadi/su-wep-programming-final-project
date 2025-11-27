@@ -16,6 +16,11 @@ class User {
         const query = `INSERT INTO users (firstname, lastname, email, password) VALUES (?, ?, ?, ?)`;
         db.query(query, [firstname, lastname, email, password], callback);
     }
+
+    static getAllUser(callback){
+        const query = `SELECT * FROM users`;
+        db.query(query, callback);
+    }
 }
 
 

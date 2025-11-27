@@ -39,4 +39,9 @@ router.get("/edit-bazar/:id", auth, (req, res) => {
 })
 
 
+router.get("/members", auth, (req, res) => {
+    let filepath = path.join(__dirname + "/../../frontend/members.html")
+    res.sendFile(filepath)
+})
+
 module.exports = router

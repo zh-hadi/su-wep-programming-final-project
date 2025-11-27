@@ -105,15 +105,15 @@
             <main class="main-content">
                 <div>
                     <div class="bazar-list">
-                        <h2>Bazar List</h2>
+                        <h2>All member List</h2>
                         <table>
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>User Name</th>
-                                    <th>Total</th>
-                                    <th>Date</th>
-                                    <th>Action</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Phone Number</th>
                                 </tr>
                             </thead>
                             <tbody id="table-body">
@@ -121,57 +121,31 @@
                                 <tr>
                                     <td>01</td>
                                     <td>Hadiuzzaman</td>
-                                    <td>500</td>
-                                    <td>10 jan 2025</td>
+                                    <td>Hadi</td>
+                                    <td>zhhadi50@gmail.com</td>
                                     <td>
-                                        <button>
-                                            <span class="material-symbols-outlined">
-                                            edit_square
-                                            </span>
-                                    </button>
-                                    <button>
-                                        <span class="material-symbols-outlined">
-                                            delete
-                                        </span>
-                                    </button>
+                                      0180234234324
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>01</td>
                                     <td>Hadiuzzaman</td>
-                                    <td>500</td>
-                                    <td>10 jan 2025</td>
+                                    <td>Hadi</td>
+                                    <td>zhhadi50@gmail.com</td>
                                     <td>
-                                        <button>
-                                            <span class="material-symbols-outlined">
-                                            edit_square
-                                            </span>
-                                    </button>
-                                    <button>
-                                        <span class="material-symbols-outlined">
-                                            delete
-                                        </span>
-                                    </button>
+                                      0180234234324
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>01</td>
                                     <td>Hadiuzzaman</td>
-                                    <td>500</td>
-                                    <td>10 jan 2025</td>
+                                    <td>Hadi</td>
+                                    <td>zhhadi50@gmail.com</td>
                                     <td>
-                                        <button>
-                                            <span class="material-symbols-outlined">
-                                            edit_square
-                                            </span>
-                                    </button>
-                                    <button>
-                                        <span class="material-symbols-outlined">
-                                            delete
-                                        </span>
-                                    </button>
+                                      0180234234324
                                     </td>
                                 </tr>
+                                
                             </tbody>
                         </table>
                     </div>
@@ -188,43 +162,30 @@
    <script src="./js/script.js"></script>
 
    <script>
-        const fetchBazarData =async () => {
-            const res = await fetch('http://localhost:3000/api/bazars');
+        const fetchAllMembers =async () => {
+            const res = await fetch('http://localhost:3000/api/members');
             const data = await res.json();
 
             console.log(data);
-            addBazarList(data.data);
+            addMemberList(data.data);
         }
 
-        fetchBazarData();
+        fetchAllMembers();
 
-        const addBazarList = (data) => {
-            let user = JSON.parse(localStorage.getItem('authuser'));
+        const addMemberList = (data) => {
+
             let html = ``;
-            data.forEach((bazar, index) => {
-                console.log(bazar)
-                // console.log(JSON.parse(bazar.food_list));
+            data.forEach((member, index) => {
+ 
                 html += `
                      <tr>
                         <td>${++index}</td>
-                        <td>${bazar.firstname + " " + bazar.lastname}</td>
-                        <td>${bazar.total_amount}</td>
-                        <td>${formatDate(bazar.date)}</td>
+                        <td>${member.firstname}</td>
+                        <td>${member.lastname}</td>
+                        <td>${member.email }</td>
                         <td>
-                           ${
-                            user.id === bazar.user_id ?
-                            `<a href="http://localhost:3000/edit-bazar/${bazar.id}">
-                                    <span class="material-symbols-outlined">
-                                    edit_square
-                                    </span>
-                            </a>
-                            <button class="pointer" onclick="deleteBazar(this, ${bazar.id})">
-                                <span class="material-symbols-outlined">
-                                    delete
-                                </span>
-                            </button>
-                            </td>` : `--`
-                            } 
+                            ${member.phone}
+                        </td>
                     </tr>
                 `;
             });

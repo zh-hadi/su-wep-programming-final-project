@@ -424,6 +424,9 @@ html {
     padding: 20px;
     /* border: 1px solid red; */
 }
+.bazar-list h2 {
+    margin-bottom: 20px;
+}
 .bazar-list table {
     width: 100%;
     /* border: 1px solid grey; */
