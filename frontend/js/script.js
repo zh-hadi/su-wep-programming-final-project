@@ -132,7 +132,9 @@ if(bazarAddForm){
             const data = await res.json();
     
     
-            console.log(data)
+            if(data.status){
+                window.location.href = "/bazars";
+            }
     
         } catch (error) {
             console.log("error happend here: "+ error);
@@ -184,7 +186,9 @@ if(bazarEditForm){
     
             const data = await res.json();
     
-            console.log(data)
+            if(data.status){
+                window.location.href = "/bazars";
+            }
     
            
     
