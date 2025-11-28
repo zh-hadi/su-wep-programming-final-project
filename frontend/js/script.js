@@ -17,10 +17,13 @@ if(loginForm){
             const data = await res.json();
     
             localStorage.setItem('authuser', JSON.stringify(data.user));
-
+            const errorMessage = document.getElementById('error-message');
             // console.log(data)
             if (data.status === true) {
                 window.location.href = data.url;
+            }else {
+                errorMessage.style.display = "block";      
+                errorMessage.innerText = data.message; 
             }
     
         } catch (error) {
