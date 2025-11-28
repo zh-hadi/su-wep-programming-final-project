@@ -22,17 +22,19 @@ app.use("/api/auth", authRoutes)
 app.use("/api", apiRoutes)
 
 
-app.get("/hadi", (req, res) => {
-    req.session.me = "my name is hadiuzzaman hadi";
-    return res.send("hello world form hadi");
-})
+// app.get("/hadi", (req, res) => {
+//     req.session.me = "my name is hadiuzzaman hadi";
+//     return res.send("hello world form hadi");
+// })
 
-app.get("/check", (req, res) => {
-    console.log(req.session.me);
-    return res.send("hi i am hadi");
-})
+// app.get("/check", (req, res) => {
+//     console.log(req.session.me);
+//     return res.send("hi i am hadi");
+// })
 
-
+app.use((req, res, next) => {
+    res.redirect("/dashboard");
+});
 
 app.listen(port, () => {
     console.log(`Project app port: ${port}`)
